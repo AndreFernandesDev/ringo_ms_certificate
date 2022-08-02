@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Hello world!</title>
+		<style>
+			@font-face {
+				font-family: 'DeutschEx';
+				src: url('data:font/truetype;charset=utf-8;base64,{{this.headingFont}}');
+			}
+
+			@font-face {
+				font-family: 'oldEnglish';
+				src: url('data:font/truetype;charset=utf-8;base64,{{this.paragraphFont}}');
+			}
+
+			body {
+				font-family: 'oldEnglish';
+				width: 100%;
+				height: 565px;
+			}
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -999;
+			}
+			body,
+			html {
+				height: 100%;
+				color: rgb(90, 42, 39);
+			}
+			@page {
+				margin: 0px;
+			}
+			body {
+				margin: 0px;
+			}
+			@page {
+				size: 835pt 600pt;
+			}
+			.bg {
+				background-image: url('data:image/png;base64,{{background}}');
+				width: 100%;
+				height: 100%;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				position: relative;
+			}
+			.abs {
+				position: absolute;
+			}
+			.backup {
+				font-family: 'notosans';
+			}
+			.font1 {
+				font-family: 'DeutschEx';
+			}
+			.font2 {
+				font-family: 'oldEnglish';
+			}
+			.size_1 {
+				font-size: 1.5rem;
+			}
+			.size_2 {
+				font-size: 1.3rem;
+			}
+			.size_3 {
+				font-size: 1.1rem;
+			}
+			.size_text {
+				font-size: 0.6rem;
+			}
+			.uppercase {
+				text-transform: uppercase;
+			}
+			.capitalize {
+				text-transform: capitalize;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bg">
+			<!-- HEADING -->
+			<div
+				class="abs font1 {{titleSize}} uppercase"
+				style="top: 135px; left: 143px; width: 2600px"
+			>
+				{{title}} {{name}}
+			</div>
+
+			<!-- LEFT PARAGRAPH -->
+			<div
+				class="abs font2 size_text"
+				style="
+					top: 165px;
+					left: 143px;
+					width: 270px;
+					line-height: 1.25;
+					text-align: justify;
+				"
+			>
+				(hereafter referred to as
+				<span class="font1 uppercase">THE {{title}}</span>), has, by way of
+				notice, this {{date}}, in the sixty ninth year of the Reign of Our
+				Sovereign Lady Elizabeth the Second, by the Grace of God, of the United
+				Kingdom of Great Britain and Northern Ireland and of Her other Realms
+				and Territories Queen, Head of the Commonwealth, Defender of the Faith,
+				delivered unto us the intention to purchase, and us with the intention
+				to accept, {{website}} Titles has agreed with the {{title}} to bequeath
+				unto them a dedication of a plot of land of precisely {{size}} in
+				Scotland, in particular, the plot of land identified and described with
+				the specific identifying plot number
+				<span class="font1">{{plot}},</span> by {{website}} Titles, of a
+				measurement of {{size}}, and hereinafter referred to as
+				<span class="font1">THE PLOT</span>. {{website}} agrees to dedicate
+				<span class="font1">THE PLOT</span> in the name of the {{title}} on an
+				estate located in {{land}}, Scotland, of its choosing, which may be
+				identified altogether or as part of a larger area and form a part of a
+				merkland, or eight ouncelands.
+			</div>
+
+			<!-- RIGHT PARAGRAPH -->
+			<div
+				class="abs font2 size_text"
+				style="
+					top: 178px;
+					left: 450px;
+					width: 250px;
+					line-height: 1.25;
+					text-align: justify;
+				"
+			>
+				Whereas, part of the estate that
+				<span class="font1">THE PLOT</span> forms a part of has been identified
+				and set aside in relation to a scheme of souvenir plots, {{website}}, in
+				<span class="font1">CONSIDERATION</span> of all sums due and paid to us
+				by the {{title}}, of which we acknowledge receipt of, has bequeathed a
+				dedication in favour of the {{title}}, {{pronoun}} assignees and
+				{{pronoun}} successors all and whole, but without the rights thereto
+				over the larger subjects and its successors in title of the larger
+				subjects and all others authorized by it, which remain with the
+				registrants of the estate and larger area and may be identified
+				altogether with the larger area. The {{title}} hereby covenants with
+				{{website}} Titles that the dedication agreed upon in this Proclamation
+				is for the {{title}} and their successors in title only and that they
+				and any of their successors shall not sell the dedication of plot number
+				<span class="font1">{{plot}}</span>, more specifically not in such a way
+				that it could be registered or owned in separate titles or in separate
+				ownerships.
+			</div>
+
+			<!-- BOTTOM PARAGRAPH -->
+			<div
+				class="abs font2 size_text"
+				style="top: 422px; left: 143px; width: 450px; line-height: 1.25"
+			>
+				<span class="font1 uppercase">{{name}}</span>, by the virtue of the
+				ownership of land in Scotland, by way of a dedication, upon the effect
+				and the receipt of this proclamation, in particular regarding the land
+				described as Plot <span class="font1">{{plot}}</span> by {{website}},
+				may henceforth and in perpetuity be known by the style and title of
+				<span class="font1">{{title}}</span> and shall hereafter, to all and
+				sundry, be known as
+				<span class="font1 uppercase">{{title}} {{name}}</span>.
+			</div>
+		</div>
+	</body>
+</html>

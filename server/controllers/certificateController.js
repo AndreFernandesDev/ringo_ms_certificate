@@ -1,35 +1,6 @@
+const { getShopifyOrder, filterOrder } = require('../helpers/shopify');
+const { generateFile } = require('../helpers/generateCertificate');
 const asyncHandler = require('express-async-handler');
-const axios = require('axios');
-
-// Get all order from API.
-const getShopifyOrder = asyncHandler(async (res, id) => {
-	if (!id) {
-		res.status(400);
-		throw new Error('Couldnt make request. Id not found.');
-	}
-
-	const order = await axios.get(
-		`https://orders.establishedtitles.com/getsingleorder-et?o=${id}`
-	);
-
-	return order.data;
-});
-
-// Get order items that are going to be processed in the printer.
-const filterOrder = (res, order) => {
-	if (!order || !order.line_items) {
-		res.status(400);
-		throw new Error('Order products not found.');
-	}
-
-	const filterOptions = process.env.PROCESSED_PRODUCT_ID.split(',');
-
-	const products = order.line_items.filter((product) =>
-		filterOptions.includes(String(product.product_id))
-	);
-
-	return products;
-};
 
 // Create PDF for each product inside order.
 const createCertificate = asyncHandler(async (req, res) => {
@@ -39,7 +10,16 @@ const createCertificate = asyncHandler(async (req, res) => {
 	}
 
 	const order = await getShopifyOrder(res, req.params.id);
+	if (!order.length) {
+		res.status(400);
+		throw new Error('Order not found.');
+	}
+
 	const products = filterOrder(res, order);
+
+	products.forEach(async (certificate) => {
+		await generateFile(certificate);
+	});
 
 	res.status(200).json(products);
 });
